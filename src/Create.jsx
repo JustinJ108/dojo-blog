@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { supabase } from "./supabaseClient"
 
 const Create = () => {
@@ -7,7 +7,7 @@ const Create = () => {
   const [body, setBody] = useState("")
   const [author, setAuthor] = useState("mario")
   const [isPending, setIsPending] = useState(false)
-  const history = useHistory()
+  const navigate = useNavigate() 
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -23,7 +23,7 @@ const Create = () => {
       console.error("Error inserting blog:", error.message)
       alert("Error adding blog: " + error.message)
     } else {
-      history.push("/") // go back to homepage after successful insert
+      navigate("/") // go back to homepage after successful insert
     }
   }
 

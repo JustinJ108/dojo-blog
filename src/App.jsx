@@ -1,51 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import Navbar from './Navbar.jsx';
 import Home from './Home.jsx';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Create from './Create';
 import BlogDetails from './BlogDetails.jsx';
 import NotFound from './NotFound.jsx';
 
-
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-  <Router>
-    <div className="card">
+    <Router>
+      <div className="card">
         <Navbar />
-
-        <div className = "content">
-
-          <Switch>
-
-            <Route exact path="/">
-              <Home />
-            </Route>
-
-            <Route path="/create">
-              <Create />
-            </Route>
-
-            <Route path="/blogs/:id">
-              <BlogDetails />
-            </Route>
-
-            <Route path="*">
-              <NotFound />
-            </Route>
-
-          </Switch>
-
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/create" element={<Create />} />
+            <Route path="/blogs/:id" element={<BlogDetails />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </div>
       </div>
-  </Router>
-      
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
